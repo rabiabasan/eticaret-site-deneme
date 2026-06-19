@@ -1,0 +1,51 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Sepetim - Mağaza{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Sepetim</h1>
+
+    {% if cart|length > 0 %}
+        <div class="cart-table">
+            <div class="cart-header">
+                <span>Ürün</span>
+                <span>Fiyat</span>
+                <span>Adet</span>
+                <span>Toplam</span>
+                <span></span>
+            </div>
+
+            {% for item in cart %}
+                {% with product=item.product %}
+                <div class="cart-row">
+                    <div class="cart-product">
+                        {% if product.image %}
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                        {% endif %}
+                        <span>{{ product.name }}</span>
+                    </div>
+                    <span>{{ item.price }} TL</span>
+                    <span>{{ item.quantity }}</span>
+                    <span class="cart-item-total">{{ item.total_price }} TL</span>
+                    <a href="{% url 'shop:cart_remove' product.id %}" class="cart-remove">Sil</a>
+                </div>
+                {% endwith %}
+            {% endfor %}
+        </div>
+
+        <div class="cart-summary">
+            <span class="cart-total-label">Genel Toplam:</span>
+            <span class="cart-total-amount">{{ cart.get_total_price }} TL</span>
+        </div>
+
+        <div class="cart-actions">
+            <a href="{% url 'shop:product_list' %}" class="btn-secondary">Alışverişe Devam Et</a>
+            <a href="{% url 'shop:order_create' %}" class="btn-add-cart">Siparişi Tamamla</a>
+        </div>
+    {% else %}
+        <div class="empty-cart">
+            <p>Sepetiniz boş.</p>
+            <a href="{% url 'shop:product_list' %}" class="btn-add-cart">Alışverişe Başla</a>
+        </div>
+    {% endif %}
+{% endblock %}

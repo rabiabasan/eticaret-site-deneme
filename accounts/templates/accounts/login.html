@@ -1,0 +1,33 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Giriş Yap - Mağaza{% endblock %}
+
+{% block content %}
+    <div class="auth-box">
+        <h1>Giriş Yap</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-field">
+                <label for="id_username">Kullanıcı Adı</label>
+                {{ form.username }}
+            </div>
+
+            <div class="form-field">
+                <label for="id_password">Şifre</label>
+                {{ form.password }}
+            </div>
+
+            {% if form.errors %}
+                <p class="form-error">Kullanıcı adı veya şifre hatalı.</p>
+            {% endif %}
+
+            <button type="submit" class="btn-add-cart">Giriş Yap</button>
+        </form>
+
+        <p class="auth-switch">
+            Hesabın yok mu? <a href="{% url 'accounts:register' %}">Kayıt Ol</a>
+        </p>
+    </div>
+{% endblock %}

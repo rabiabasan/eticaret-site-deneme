@@ -1,0 +1,43 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Kayıt Ol - Mağaza{% endblock %}
+
+{% block content %}
+    <div class="auth-box">
+        <h1>Kayıt Ol</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="form-field">
+                <label for="id_username">Kullanıcı Adı</label>
+                {{ form.username }}
+                {% if form.username.errors %}
+                    <span class="field-error">{{ form.username.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-field">
+                <label for="id_password1">Şifre</label>
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <span class="field-error">{{ form.password1.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <div class="form-field">
+                <label for="id_password2">Şifre (Tekrar)</label>
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <span class="field-error">{{ form.password2.errors.0 }}</span>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn-add-cart">Kayıt Ol</button>
+        </form>
+
+        <p class="auth-switch">
+            Zaten hesabın var mı? <a href="{% url 'accounts:login' %}">Giriş Yap</a>
+        </p>
+    </div>
+{% endblock %}

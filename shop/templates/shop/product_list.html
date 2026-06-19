@@ -1,0 +1,43 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Ürünler - Mağaza{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Ürünlerimiz</h1>
+
+    <div class="category-bar">
+    <span class="category-label">Kategoriler:</span>
+    <a href="{% url 'shop:product_list' %}"
+       class="category-chip {% if not current_category %}active{% endif %}">
+        Tümü
+    </a>
+    {% for category in categories %}
+        <a href="{% url 'shop:product_list_by_category' category.slug %}"
+           class="category-chip {% if current_category.slug == category.slug %}active{% endif %}">
+            {{ category.name }}
+        </a>
+    {% endfor %}
+</div>
+
+    <div class="product-grid">
+        {% for product in products %}
+            <a href="{% url 'shop:product_detail' product.slug %}" class="product-card">
+                <div class="product-image">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    {% else %}
+                        <div class="no-image">Resim Yok</div>
+                    {% endif %}
+                </div>
+                <div class="product-info">
+                    <span class="product-category">{{ product.category.name }}</span>
+                    <h3 class="product-name">{{ product.name }}</h3>
+                    <p class="product-price">{{ product.price }} TL</p>
+                    <span class="product-stock">Stok: {{ product.stock }}</span>
+                </div>
+            </a>
+        {% empty %}
+            <p>Henüz ürün eklenmemiş.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

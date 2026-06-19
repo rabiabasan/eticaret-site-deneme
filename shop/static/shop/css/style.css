@@ -1,0 +1,733 @@
+/* ===== 1. TEMEL AYARLAR ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f7f7f8;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* ===== 2. HEADER (ÜST MENÜ) ===== */
+
+.site-header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e5e5;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.main-nav a {
+    font-weight: 500;
+    color: #555;
+    transition: color 0.2s;
+}
+
+.main-nav a:hover {
+    color: #000;
+}
+
+
+/* ===== 3. ANA İÇERİK ===== */
+
+.main-content {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    min-height: 70vh;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+
+/* ===== 4. KATEGORİ ÇUBUĞU ===== */
+
+.category-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+
+.category-label {
+    font-weight: 600;
+    color: #666;
+}
+
+.category-chip:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.category-chip.active {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: #ffffff;
+}
+
+
+/* ===== 5. ÜRÜN IZGARASI (GRID) ===== */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.product-card {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.product-image {
+    width: 100%;
+    height: 220px;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.no-image {
+    color: #aaa;
+    font-size: 14px;
+}
+
+.product-info {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.product-category {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.product-stock {
+    font-size: 13px;
+    color: #999;
+}
+
+
+/* ===== 6. ÜRÜN DETAY SAYFASI ===== */
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 24px;
+    color: #2563eb;
+    font-weight: 500;
+}
+
+.detail-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid #eaeaea;
+}
+
+.detail-image {
+    width: 100%;
+    height: 400px;
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.detail-info h1 {
+    font-size: 28px;
+    margin: 8px 0 16px;
+}
+
+.detail-price {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 8px;
+}
+
+.detail-stock {
+    color: #666;
+    margin-bottom: 24px;
+}
+
+.detail-description {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-bottom: 28px;
+}
+
+.detail-description h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.detail-description p {
+    color: #555;
+}
+
+.btn-add-cart {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-add-cart:hover {
+    background-color: #1d4ed8;
+}
+
+
+/* ===== 7. FOOTER (ALT BİLGİ) ===== */
+
+.site-footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e5e5e5;
+    padding: 24px 0;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+}
+
+
+/* ===== 8. MOBİL UYUM ===== */
+
+@media (max-width: 768px) {
+    .detail-wrapper {
+        grid-template-columns: 1fr;
+    }
+    .detail-image {
+        height: 300px;
+    }
+}
+
+
+/* ===== SEPET ===== */
+
+.cart-link {
+    position: relative;
+}
+
+.cart-count {
+    background-color: #2563eb;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    margin-left: 4px;
+}
+
+.cart-table {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.cart-header,
+.cart-row {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr 60px;
+    align-items: center;
+    padding: 16px 20px;
+    gap: 10px;
+}
+
+.cart-header {
+    background: #f7f7f8;
+    font-weight: 600;
+    font-size: 14px;
+    color: #666;
+}
+
+.cart-row {
+    border-top: 1px solid #f0f0f0;
+}
+
+.cart-product {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cart-product img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item-total {
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.cart-remove {
+    color: #ef4444;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.cart-summary {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    margin-top: 24px;
+    padding: 20px;
+}
+
+.cart-total-label {
+    font-size: 18px;
+    color: #666;
+}
+
+.cart-total-amount {
+    font-size: 26px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.cart-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+
+.btn-secondary {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #444;
+}
+
+.btn-secondary:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.empty-cart p {
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+
+/* ===== GİRİŞ / KAYIT FORMLARI ===== */
+
+.auth-box {
+    max-width: 420px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    border: 1px solid #eaeaea;
+}
+
+.auth-box h1 {
+    font-size: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.form-field {
+    margin-bottom: 20px;
+}
+
+.form-field label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #444;
+}
+
+.form-field input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.form-field input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.auth-box .btn-add-cart {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.auth-switch {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.auth-switch a {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.form-error {
+    color: #ef4444;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.field-error {
+    color: #ef4444;
+    font-size: 13px;
+    display: block;
+    margin-top: 4px;
+}
+
+.register-link {
+    background: #2563eb;
+    color: #fff !important;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.logout-form {
+    display: inline;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    color: #555;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+}
+
+.logout-btn:hover {
+    color: #ef4444;
+}
+
+
+/* ===== PROFİL ===== */
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.profile-card {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 28px;
+}
+
+.profile-card h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.profile-label {
+    color: #888;
+    font-size: 14px;
+}
+
+.profile-value {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.empty-orders {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.empty-orders p {
+    color: #888;
+    margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ===== SİPARİŞ (CHECKOUT) ===== */
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.checkout-form,
+.checkout-summary {
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 28px;
+}
+
+.checkout-form h3,
+.checkout-summary h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.checkout-form .btn-add-cart {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    font-size: 14px;
+    color: #555;
+    border-bottom: 1px solid #f7f7f7;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 2px solid #eee;
+    font-size: 18px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.order-success {
+    max-width: 500px;
+    margin: 40px auto;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 16px;
+    padding: 48px;
+    text-align: center;
+}
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+    background: #22c55e;
+    color: #fff;
+    font-size: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+}
+
+.order-success h1 {
+    font-size: 26px;
+    margin-bottom: 16px;
+}
+
+.order-success p {
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.success-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 28px;
+}
+
+@media (max-width: 768px) {
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ===== PROFİL SİPARİŞ LİSTESİ ===== */
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.order-item {
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.order-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.order-number {
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.order-date {
+    color: #999;
+    font-size: 14px;
+}
+
+.order-products {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.order-product-line {
+    font-size: 14px;
+    color: #555;
+}
+
+.order-foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-total {
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+.badge-paid {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.badge-pending {
+    background: #fef3c7;
+    color: #d97706;
+}

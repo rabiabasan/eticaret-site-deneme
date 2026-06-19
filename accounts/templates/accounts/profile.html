@@ -1,0 +1,63 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Profilim - Mağaza{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Profilim</h1>
+
+    <div class="profile-grid">
+        <div class="profile-card">
+            <h3>Hesap Bilgileri</h3>
+            <div class="profile-row">
+                <span class="profile-label">Kullanıcı Adı</span>
+                <span class="profile-value">{{ user.username }}</span>
+            </div>
+            <div class="profile-row">
+                <span class="profile-label">E-posta</span>
+                <span class="profile-value">
+                    {% if user.email %}{{ user.email }}{% else %}Belirtilmemiş{% endif %}
+                </span>
+            </div>
+            <div class="profile-row">
+                <span class="profile-label">Üyelik Tarihi</span>
+                <span class="profile-value">{{ user.date_joined|date:"d F Y" }}</span>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <h3>Siparişlerim</h3>
+            {% if orders %}
+                <div class="order-list">
+                    {% for order in orders %}
+                        <div class="order-item">
+                            <div class="order-head">
+                                <span class="order-number">Sipariş #{{ order.id }}</span>
+                                <span class="order-date">{{ order.created_at|date:"d.m.Y" }}</span>
+                            </div>
+                            <div class="order-products">
+                                {% for item in order.items.all %}
+                                    <span class="order-product-line">
+                                        {{ item.quantity }} x {{ item.product.name }}
+                                    </span>
+                                {% endfor %}
+                            </div>
+                            <div class="order-foot">
+                                <span class="order-total">Toplam: {{ order.get_total_cost }} TL</span>
+                                {% if order.paid %}
+                                    <span class="badge badge-paid">Ödendi</span>
+                                {% else %}
+                                    <span class="badge badge-pending">Hazırlanıyor</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-orders">
+                    <p>Henüz siparişiniz bulunmuyor.</p>
+                    <a href="{% url 'shop:product_list' %}" class="btn-secondary">Alışverişe Başla</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

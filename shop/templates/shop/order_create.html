@@ -1,0 +1,64 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Sipariş - Mağaza{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Siparişi Tamamla</h1>
+
+    <div class="checkout-grid">
+        <div class="checkout-form">
+            <h3>Teslimat Bilgileri</h3>
+            <form method="post">
+                {% csrf_token %}
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Ad</label>
+                        {{ form.first_name }}
+                    </div>
+                    <div class="form-field">
+                        <label>Soyad</label>
+                        {{ form.last_name }}
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label>E-posta</label>
+                    {{ form.email }}
+                </div>
+
+                <div class="form-field">
+                    <label>Adres</label>
+                    {{ form.address }}
+                </div>
+
+                <div class="form-row">
+                    <div class="form-field">
+                        <label>Şehir</label>
+                        {{ form.city }}
+                    </div>
+                    <div class="form-field">
+                        <label>Telefon</label>
+                        {{ form.phone }}
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-add-cart">Siparişi Onayla</button>
+            </form>
+        </div>
+
+        <div class="checkout-summary">
+            <h3>Sipariş Özeti</h3>
+            {% for item in cart %}
+                <div class="summary-item">
+                    <span>{{ item.quantity }} x {{ item.product.name }}</span>
+                    <span>{{ item.total_price }} TL</span>
+                </div>
+            {% endfor %}
+            <div class="summary-total">
+                <span>Toplam</span>
+                <span>{{ cart.get_total_price }} TL</span>
+            </div>
+        </div>
+    </div>
+{% endblock %}

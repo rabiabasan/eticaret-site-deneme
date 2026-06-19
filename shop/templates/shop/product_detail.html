@@ -1,0 +1,31 @@
+{% extends "shop/base.html" %}
+
+{% block title %}{{ product.name }} - Mağaza{% endblock %}
+
+{% block content %}
+    <a href="{% url 'shop:product_list' %}" class="back-link">← Tüm Ürünlere Dön</a>
+
+    <div class="detail-wrapper">
+        <div class="detail-image">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% else %}
+                <div class="no-image">Resim Yok</div>
+            {% endif %}
+        </div>
+
+        <div class="detail-info">
+            <span class="product-category">{{ product.category.name }}</span>
+            <h1>{{ product.name }}</h1>
+            <p class="detail-price">{{ product.price }} TL</p>
+            <p class="detail-stock">Stok durumu: {{ product.stock }} adet</p>
+
+            <div class="detail-description">
+                <h3>Ürün Açıklaması</h3>
+                <p>{{ product.description }}</p>
+            </div>
+
+            <a href="{% url 'shop:cart_add' product.id %}" class="btn-add-cart">Sepete Ekle</a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Sipariş Alındı - Mağaza{% endblock %}
+
+{% block content %}
+    <div class="order-success">
+        <div class="success-icon">✓</div>
+        <h1>Siparişiniz Alındı!</h1>
+        <p>Sipariş numaranız: <strong>#{{ order.id }}</strong></p>
+        <p>Teşekkür ederiz, {{ order.first_name }}. Siparişiniz hazırlanıyor.</p>
+
+        <div class="success-actions">
+            <a href="{% url 'shop:product_list' %}" class="btn-secondary">Alışverişe Devam Et</a>
+            <a href="{% url 'accounts:profile' %}" class="btn-add-cart">Siparişlerimi Gör</a>
+        </div>
+    </div>
+{% endblock %}
