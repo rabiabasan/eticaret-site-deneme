@@ -13,6 +13,7 @@
             <a href="{% url 'shop:product_list' %}" class="logo">🛍️ Mağaza</a>
             <nav class="main-nav">
     <a href="{% url 'shop:product_list' %}">Ürünler</a>
+    <a href="{% url 'shop:weather' %}">Hava Durumu</a>
     <a href="{% url 'shop:cart_detail' %}" class="cart-link">
         🛒 Sepet
         {% with total_items=cart|length %}

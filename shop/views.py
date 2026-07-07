@@ -3,6 +3,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Category, Product, Order, OrderItem
 from .cart import Cart
 from .forms import OrderCreateForm
+from rest_framework import generics
+from .serializers import ProductSerializer, CategorySerializer
+import requests
+from decouple import config
 
 def product_list(request, category_slug=None):
     categories = Category.objects.all()
@@ -73,3 +77,63 @@ def order_create(request):
         form = OrderCreateForm()
 
     return render(request, "shop/order_create.html", {"cart": cart, "form": form})
+
+
+# ===== API VIEW'LERİ =====
+
+class ProductListAPI(generics.ListAPIView):
+    queryset = Product.objects.filter(available=True)
+    serializer_class = ProductSerializer
+
+
+class ProductDetailAPI(generics.RetrieveAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    lookup_field = "slug"
+
+
+class CategoryListAPI(generics.ListAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    
+    
+
+def weather(request):
+    city = request.GET.get("city", "Ankara")  # varsayılan: Ankara
+    api_key = config("WEATHER_API_KEY")
+
+    url = "https://api.openweathermap.org/data/2.5/weather"
+    params = {
+        "q": city,
+        "appid": api_key,
+        "units": "metric",   # Celsius için
+        "lang": "tr",        # Türkçe açıklama
+    }
+
+    weather_data = None
+    error = None
+
+    try:
+        response = requests.get(url, params=params, timeout=5)
+        if response.status_code == 200:
+            data = response.json()
+            weather_data = {
+                "city": data["name"],
+                "temp": round(data["main"]["temp"]),
+                "description": data["weather"][0]["description"],
+                "humidity": data["main"]["humidity"],
+                "icon": data["weather"][0]["icon"],
+            }
+        elif response.status_code == 404:
+            error = "Şehir bulunamadı."
+        else:
+            error = "Hava durumu alınamadı. (Anahtar henüz aktif olmayabilir.)"
+    except requests.RequestException:
+        error = "Bağlantı hatası oluştu."
+
+    context = {
+        "weather_data": weather_data,
+        "error": error,
+        "city": city,
+    }
+    return render(request, "shop/weather.html", context)

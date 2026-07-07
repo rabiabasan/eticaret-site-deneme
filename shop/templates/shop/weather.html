@@ -1,0 +1,31 @@
+{% extends "shop/base.html" %}
+
+{% block title %}Hava Durumu - Mağaza{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Hava Durumu</h1>
+
+    <form method="get" class="weather-search">
+        <input type="text" name="city" placeholder="Şehir adı girin..." value="{{ city }}">
+        <button type="submit" class="btn-add-cart">Ara</button>
+    </form>
+
+    {% if weather_data %}
+        <div class="weather-card">
+            <div class="weather-main">
+                <img src="https://openweathermap.org/img/wn/{{ weather_data.icon }}@2x.png"
+                     alt="{{ weather_data.description }}">
+                <div class="weather-temp">{{ weather_data.temp }}°C</div>
+            </div>
+            <div class="weather-details">
+                <h2>{{ weather_data.city }}</h2>
+                <p class="weather-desc">{{ weather_data.description|capfirst }}</p>
+                <p class="weather-humidity">Nem: %{{ weather_data.humidity }}</p>
+            </div>
+        </div>
+    {% elif error %}
+        <div class="weather-error">
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+{% endblock %}

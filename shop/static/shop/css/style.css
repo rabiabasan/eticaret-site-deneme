@@ -47,6 +47,12 @@ a {
     font-weight: 700;
 }
 
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
 .main-nav a {
     font-weight: 500;
     color: #555;
@@ -54,7 +60,7 @@ a {
 }
 
 .main-nav a:hover {
-    color: #000;
+    color: #22c55e;
 }
 
 
@@ -88,14 +94,25 @@ a {
     color: #666;
 }
 
+.category-chip {
+    background-color: #ffffff;
+    border: 1.5px solid #d1d5db;
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+    transition: all 0.2s;
+}
+
 .category-chip:hover {
-    border-color: #2563eb;
-    color: #2563eb;
+    border-color: #681515;
+    color: #681515;
 }
 
 .category-chip.active {
-    background-color: #2563eb;
-    border-color: #2563eb;
+    background-color: #681515;
+    border-color: #681515;
     color: #ffffff;
 }
 
@@ -167,7 +184,7 @@ a {
 .product-price {
     font-size: 18px;
     font-weight: 700;
-    color: #2563eb;
+    color: #681515;
 }
 
 .product-stock {
@@ -181,7 +198,7 @@ a {
 .back-link {
     display: inline-block;
     margin-bottom: 24px;
-    color: #2563eb;
+    color: #681515;
     font-weight: 500;
 }
 
@@ -220,7 +237,7 @@ a {
 .detail-price {
     font-size: 26px;
     font-weight: 700;
-    color: #2563eb;
+    color: #681515;
     margin-bottom: 8px;
 }
 
@@ -245,7 +262,7 @@ a {
 }
 
 .btn-add-cart {
-    background-color: #2563eb;
+    background-color: #681515;
     color: #ffffff;
     border: none;
     padding: 14px 32px;
@@ -292,7 +309,7 @@ a {
 }
 
 .cart-count {
-    background-color: #2563eb;
+    background-color: #681515;
     color: #fff;
     font-size: 12px;
     font-weight: 700;
@@ -343,7 +360,7 @@ a {
 
 .cart-item-total {
     font-weight: 700;
-    color: #2563eb;
+    color: #681515;
 }
 
 .cart-remove {
@@ -369,7 +386,7 @@ a {
 .cart-total-amount {
     font-size: 26px;
     font-weight: 700;
-    color: #2563eb;
+    color: #681515;
 }
 
 .cart-actions {
@@ -388,8 +405,8 @@ a {
 }
 
 .btn-secondary:hover {
-    border-color: #2563eb;
-    color: #2563eb;
+    border-color: #681515;
+    color: #681515;
 }
 
 .empty-cart {
@@ -443,7 +460,7 @@ a {
 
 .form-field input:focus {
     outline: none;
-    border-color: #2563eb;
+    border-color: #681515;
 }
 
 .auth-box .btn-add-cart {
@@ -459,7 +476,7 @@ a {
 }
 
 .auth-switch a {
-    color: #2563eb;
+    color: #681515;
     font-weight: 600;
 }
 
@@ -477,7 +494,7 @@ a {
 }
 
 .register-link {
-    background: #2563eb;
+    background: #681515;
     color: #fff !important;
     padding: 8px 16px;
     border-radius: 8px;
@@ -610,7 +627,7 @@ a {
     border-top: 2px solid #eee;
     font-size: 18px;
     font-weight: 700;
-    color: #2563eb;
+    color: #681515;
 }
 
 .order-success {
@@ -712,7 +729,7 @@ a {
 
 .order-total {
     font-weight: 700;
-    color: #2563eb;
+    color: #681515;
 }
 
 .badge {
@@ -730,4 +747,79 @@ a {
 .badge-pending {
     background: #fef3c7;
     color: #d97706;
+}
+
+
+/* ===== HAVA DURUMU ===== */
+
+.weather-search {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 28px;
+    max-width: 420px;
+}
+
+.weather-search input {
+    flex: 1;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.weather-search input:focus {
+    outline: none;
+    border-color: #681515;
+}
+
+.weather-card {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    background: #fff;
+    border: 1px solid #eaeaea;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 500px;
+}
+
+.weather-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-main img {
+    width: 100px;
+    height: 100px;
+}
+
+.weather-temp {
+    font-size: 42px;
+    font-weight: 700;
+    color: #681515;
+}
+
+.weather-details h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.weather-desc {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.weather-humidity {
+    color: #888;
+}
+
+.weather-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 12px;
+    padding: 20px;
+    color: #dc2626;
+    max-width: 500px;
 }
